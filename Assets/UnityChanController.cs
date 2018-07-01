@@ -8,7 +8,7 @@ public class UnityChanController : MonoBehaviour {
 	//Unityちゃんを移動させるコンポーネントを入れる（追加）
 	private Rigidbody myRigidbody;
 	//前進するための力（追加）
-	private float forwardForce = 1200.0f;
+	private float forwardForce = 1300.0f;
 
 	private float turnForce = 500.0f;
 	//左右の移動できる範囲（追加）
@@ -26,6 +26,8 @@ public class UnityChanController : MonoBehaviour {
 	private bool isLButtonDown = false;
 	//右ボタン押下の判定
 	private bool isRButtonDown = false;
+
+	private bool isResetButtonDown = false;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +52,7 @@ public class UnityChanController : MonoBehaviour {
 
 		//ゲーム終了ならUnityちゃんの動きを減衰する（追加）
 		if (this.isEnd) {
+			
 			this.forwardForce *= this.coefficient;
 			this.turnForce *= this.coefficient;
 			this.myAnimator.speed *= this.coefficient;
@@ -67,6 +70,11 @@ public class UnityChanController : MonoBehaviour {
 			//右に移動
 			this.myRigidbody.AddForce (this.turnForce, 0, 0);
 		} 
+
+		if (this.isResetButtonDown) {
+			Application.LoadLevel("GameScene");
+		}
+
 		if (this.myAnimator.GetCurrentAnimatorStateInfo (0).IsName ("kick")) {
 			this.myAnimator.SetBool ("kick",false);
 		}
@@ -126,6 +134,15 @@ public class UnityChanController : MonoBehaviour {
 	//右ボタンを離した場合の処理
 	public void GetMyRightButtonUp() {
 		this.isRButtonDown = false;
+	}
+
+
+	public void ResetButtonDown() {
+		this.isResetButtonDown = true;
+	}
+
+	public void ResetButtonUp() {
+		this.isResetButtonDown = false;
 	}
 
 }

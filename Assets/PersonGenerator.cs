@@ -44,7 +44,7 @@ public class PersonGenerator : MonoBehaviour {
 						GameObject coin = Instantiate (coinPrefab) as GameObject;
 						coin.transform.position = new Vector3 (posRange * offsetx, coin.transform.position.y, i + offsetz);
 					} else if (5 <= item && item <= 7) {
-						//車を生成
+						//生成
 						GameObject person = Instantiate (personPrefab) as GameObject;
 						person.transform.position = new Vector3 (posRange * offsetx, person.transform.position.y, i + offsetz);
 					}
