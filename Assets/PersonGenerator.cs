@@ -36,7 +36,7 @@ public class PersonGenerator : MonoBehaviour {
 					//アイテムを置くZ座標のオフセットをランダムに設定
 					int offsetz = Random.Range(-5, 6);
 
-					int offsetx = Random.Range (-5, 5);
+					int offsetx = Random.Range (-4, 4);
 
 					//60%コイン配置:30%車配置:10%何もなし
 					if (1 <= item && item <= 4) {
